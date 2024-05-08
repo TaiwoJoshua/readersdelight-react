@@ -42,7 +42,7 @@ function Navbar({ shortcuts, admin }) {
             <label htmlFor="searchToggle" className='showSearch'><FaMagnifyingGlass /></label>
             <label htmlFor="searchToggle" className='hideSearch'><LiaTimesCircle /></label>
             {admin && <div className='nav-btn-wrap'>
-                <button className='button' style={{ backgroundColor: "#0B6623" }} onClick={ signOutUser }><FaSignOutAlt /> Logout</button>
+                <button className='button' style={{ backgroundColor: "#D01313" }} onClick={ signOutUser }><FaSignOutAlt /> Logout</button>
             </div>}
             {!admin && <div className='nav-btn-wrap'>
                 <button className='button' onClick={() => { setClose(false) }}><FaSignInAlt /> Admin</button>

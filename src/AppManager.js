@@ -4,6 +4,7 @@ import { db, storage } from "./Api";
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { authRequired } from "./Auth";
 import { ApiClient, BodyPart, EmailMessageData, EmailRecipient, EmailsApi } from '@elasticemail/elasticemail-client';
+import axios from "axios";
 
 function randomCode(){
     const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -530,67 +531,115 @@ export function checkImage(files, maxSize, setError, setStatus){
     }
 }
 
-export const sendEmail = ( To, Subject, Content, setStatus, setFormData, setLoading, success, fail, reset ) => {
-    let defaultClient = ApiClient.instance;
+// export const sendEmail = ( To, Subject, Content, setStatus = false, setFormData = false, setLoading = false, success = false, fail = false, reset = false ) => {
+//     try {
+//         let defaultClient = ApiClient.instance;
+    
+//         // Set your API key
+//         let apikey = defaultClient.authentications['apikey'];
+//         apikey.apiKey = process.env.REACT_APP_ELASTIC_EMAIL_API_KEY;
+    
+//         // Create an instance of the EmailsApi
+//         let api = new EmailsApi();
+    
+//         // Create the email message data
+//         let email = EmailMessageData.constructFromObject({
+//             Recipients: [
+//             new EmailRecipient(To)
+//             ],
+//             Content: {
+//             Body: [
+//                 BodyPart.constructFromObject({
+//                 ContentType: "HTML",
+//                 Content
+//                 })
+//             ],
+//             Subject,
+//             From: `"ReadersDelight" <taiwojoshua840@gmail.com>`
+//             }
+//         });
+    
+//         // Define the callback function to handle the response
+//         var callback = function(error, data, response) {
+//             setTimeout(() => {
+//                 setTimeout(() => {
+//                     setLoading && setLoading(false);
+//                 }, 1000);
+//                 if (error) {
+//                     if(error.message === "Unsuccessful HTTP response"){
+//                         setStatus && setStatus(success);
+//                         setFormData && setFormData(reset);
+//                         return "sent";
+//                     }else{
+//                         setStatus && setStatus(fail);
+//                         return "failed";
+//                     }
+//                 } else {
+//                     if(response.status === 200){
+//                         setStatus && setStatus(success);
+//                         setFormData && setFormData(reset);
+//                         return "sent";
+//                     }else{
+//                         setStatus && setStatus(fail);
+//                         return "failed";
+//                     }
+//                 }
+//             }, 1000);
+//         };
+    
+//         api.emailsPost(email, callback);
+//     } catch (error) {
+//         console.log(error);
+//         return "failed";
+//     }
+// };
 
-    // Set your API key
-    let apikey = defaultClient.authentications['apikey'];
-    apikey.apiKey = process.env.REACT_APP_ELASTIC_EMAIL_API_KEY;
-
-    // Create an instance of the EmailsApi
-    let api = new EmailsApi();
-
-    // Create the email message data
-    let email = EmailMessageData.constructFromObject({
-        Recipients: [
-        new EmailRecipient(To)
-        ],
-        Content: {
-        Body: [
-            BodyPart.constructFromObject({
-            ContentType: "HTML",
-            Content
-            })
-        ],
-        Subject,
-        From: `"ReadersDelight" <taiwojoshua840@gmail.com>`
-        }
-    });
-
-    // Define the callback function to handle the response
-    var callback = function(error, data, response) {
-        setTimeout(() => {
-            setTimeout(() => {
-                setLoading(false);
-            }, 1000);
-            if (error) {
-                if(error.message === "Unsuccessful HTTP response"){
-                    setStatus(success);
-                    setFormData(reset);
-                    return "sent";
-                }else{
-                    setStatus(fail);
-                    return "failed";
-                }
-            } else {
-                if(response.status === 200){
-                    setStatus(success);
-                    setFormData(reset);
-                    return "sent";
-                }else{
-                    setStatus(fail);
-                    return "failed";
-                }
-            }
-        }, 1000);
-    };
-
+export const sendEmail = async ( To, Subject, Content, setStatus = false, setFormData = false, setLoading = false, success = false, fail = false, reset = false ) => {
     try {
-        api.emailsPost(email, callback);
+        const data = { To, Subject, Content, send_mail: "njkxekfe" };
+        let formdata = new FormData();
+        for(var key in data){
+            formdata.append(key, data[key])
+        }
+        const url = "https://ructrainingunit.com.ng/php/readersdelightemail.php";
+        const send = await axios.post(url,formdata, {
+            mode: "cors",
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+        });
+        const res = send.data;
+        setLoading && setLoading(false);
+        if(res === "sent"){
+            setStatus && setStatus(success);
+            setFormData && setFormData(reset);
+            return "sent";
+        }else{
+            setStatus && setStatus(fail);
+            return "failed";
+        }
     } catch (error) {
+        setLoading && setLoading(false);
+        setStatus && setStatus(fail);
         return "failed";
+        // return error;
     }
 };
+
+export function donationMail(name, booktitle, email){
+    try {
+        const mailContent = `<div style="background-color: #E9EBEE; padding: 40px 20px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"><div style="width: 100%; max-width: 600px; background-color: white; margin: auto; border-radius: 10px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); padding: 15px;"><a href="https://readersdelight.netlify.app/" style="text-decoration: none; color: black;"><h1 title='Readers Delight' style="display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0; padding: 0;"><img src="https://readersdelight.netlify.app/images/icon.png" alt="Readers Delight" style="width: 40px;" /><span style="color: #0B6623;">READERS</span>DELIGHT</h1></a><hr style="color: gray; margin: 15px 0;" /><h3 style="margin: 0;">Dear ${name},</h3><p>We hope this email finds you well.</p><p>We wanted to take a moment to express our heartfelt gratitude for your recent donation of <i>${booktitle}</i> to the <strong><span style="color: #0B6623;">READERS</span>DELIGHT</strong> eLibrary. Your generosity is truly appreciated, and your contribution will make a meaningful difference in our efforts to promote availability of resources.</p><p>Thank you for your kindness and support. Your donation will help enrich the reading experiences of many individuals in our community.</p><p style="margin-bottom: 0;">Warm regards,</p><p style="margin-top: 0;"><strong>Readers Delight Team.</strong></p></div></div>`;
+
+        const res = sendEmail(`"${name}" <${email}>`, "Thank You for Your Donation", mailContent);
+        console.log(res);
+        return res;
+    } catch (error) {
+        console.log(error);
+        return "Failed";
+        // return error;
+    }
+}
+donationMail("Taiwo Joshua", "Hello Hello", "joshuataiwo007@gmail.com");
 
 
 // ==========================================================================================

@@ -1,7 +1,7 @@
 import React from 'react';
 import Banner from './Banner';
 import { Link } from 'react-router-dom';
-import { FaBook, FaBookOpenReader, FaComments, FaGift, FaHeart, FaPhone } from 'react-icons/fa6';
+import { FaBook, FaBookOpenReader, FaComments, FaGift, FaHeart, FaLightbulb, FaPhone } from 'react-icons/fa6';
 
 function Footer({ admin }) {
     return (
@@ -33,7 +33,7 @@ function Footer({ admin }) {
                 <p>© Copyright <Link to="/"><strong style={{color: "#000000"}}><span style={{color: "#0B6623"}}>READERS</span>DELIGHT</strong></Link> {new Date().getFullYear()}. All Right Reserved. Designed and Developed by <strong><a href='https://taiwojoshua.netlify.app/' target='_blank' rel='noreferrer'>Taiwo Joshua</a></strong></p>
             </div>
             <div style={{ marginTop: "2px", textAlign: "center", padding: "10px" }}>
-                <p><FaHeart style={{ color: "#D01313", marginBottom: "-2px" }} /> Inspired by <strong><a href='https://www.pdfdrive.com/' target='_blank' rel='noreferrer' style={{ color: "black" }}><span style={{ color: "#D01313" }}>PDF</span>DRIVE</a></strong> <FaHeart style={{ color: "#D01313", marginBottom: "-2px" }} /></p>
+                <p><FaLightbulb style={{ color: "#D01313", marginBottom: "-2px" }} /> Inspired by <strong><a href='https://www.pdfdrive.com/' target='_blank' rel='noreferrer' style={{ color: "black" }}><span style={{ color: "#D01313" }}>PDF</span>DRIVE</a></strong> <FaHeart style={{ color: "#D01313", marginBottom: "-2px" }} /></p>
             </div>
         </footer>
     );

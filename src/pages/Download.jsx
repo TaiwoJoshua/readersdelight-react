@@ -116,7 +116,7 @@ export default function Download() {
       <div className="book-info-card">
         <FancyboxView className="book-info-img">
           <a data-fancybox="book" href={data.cover}>
-            <img src={data.cover} alt={data.title} />
+            <img onError={(e)=>{ if (e.target.src !== "/default.png"){ e.target.onerror = null; e.target.src="/default.png"; }}} src={data.cover} alt={data.title} />
           </a>
         </FancyboxView>
         <div className="book-info">

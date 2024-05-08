@@ -25,6 +25,22 @@ export default function Search() {
     }
   }, [result]);
 
+  
+  React.useEffect(() => {
+    function height(){
+      const box = document.querySelector(".main>div>div").getBoundingClientRect().height;
+      const wrapper = document.getElementsByClassName("home-books")[0];
+      const height = box - 90;
+      wrapper.style.height = height > wrapper.scrollHeight ? wrapper.scrollHeight : height + "px";
+    }
+    height();
+    const quote = document.getElementsByClassName("quote")[0];
+    const resizeObserver = new ResizeObserver(height);
+    resizeObserver.observe(quote);
+    
+    return () => resizeObserver.disconnect();
+  }, []);
+
   React.useEffect(() => {
     const { output, length } = sortBooks(books, search, keywords, getPriority(priority));
     setResult(output.slice(0, length));

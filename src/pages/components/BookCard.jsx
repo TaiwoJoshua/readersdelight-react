@@ -12,7 +12,7 @@ export default function BookCard({ cover, title, size, pages, downloads, author,
             {!close && <DeleteBook type={"books"} book={{ cover, title, size, pages, downloads, author, id, preview }} setBooks={ setBooks } close={() => {setClose(true)}} />}
             <FancyboxView className='book-card-img'>
                 <a data-fancybox={ id } href={ cover }>
-                    <img src={ cover } alt={ title } />
+                    <img onError={(e)=>{ if (e.target.src !== "/default.png"){ e.target.onerror = null; e.target.src="/default.png"; }}} src={ cover } alt={ title } />
                 </a>
             </FancyboxView>
             <div className='book-card-info'>

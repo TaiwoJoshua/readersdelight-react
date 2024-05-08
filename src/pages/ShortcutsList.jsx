@@ -23,7 +23,7 @@ export default function ShortcutsList() {
         }
     }, [admin, auth, navigate]);
     
-    const elements = shortcuts.map(({shortcut, icon}) => <span key={nanoid()} className='shortcut-card'><img src={icon} alt={shortcut.toUpperCase()} /><span>{shortcut.toUpperCase()}</span><span className='shortcut-options one'  onClick={() => { setEditer({ shortcut, icon }); setEditClose(false); }}><FaFilePen /></span><span className='shortcut-options two' onClick={() => { setDeleter({ shortcut, icon }); setClose(false); }}><FaTrash /></span></span>);
+    const elements = shortcuts.map(({shortcut, icon}) => <span key={nanoid()} className='shortcut-card'><img onError={(e)=>{ if (e.target.src !== "/default.png"){ e.target.onerror = null; e.target.src="/default.png"; }}} src={icon} alt={shortcut.toUpperCase()} /><span>{shortcut.toUpperCase()}</span><span className='shortcut-options one'  onClick={() => { setEditer({ shortcut, icon }); setEditClose(false); }}><FaFilePen /></span><span className='shortcut-options two' onClick={() => { setDeleter({ shortcut, icon }); setClose(false); }}><FaTrash /></span></span>);
 
     return (
         <div className='shortcuts-wrap special'>
