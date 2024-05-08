@@ -595,16 +595,17 @@ export function checkImage(files, maxSize, setError, setStatus){
 
 export const sendEmail = async ( To, Subject, Content, setStatus = false, setFormData = false, setLoading = false, success = false, fail = false, reset = false ) => {
     try {
-        const data = { To, Subject, Content, send_mail: "njkxekfe" };
+        const data = { To, Subject, Content, send_mail: "mklermklerml" };
         let formdata = new FormData();
         for(var key in data){
             formdata.append(key, data[key])
         }
-        const url = "https://ructrainingunit.com.ng/php/readersdelightemail.php";
+        const url = "https://www.ructrainingunit.com.ng/php/readersdelightemail.php";
         const send = await axios.post(url,formdata, {
             mode: "cors",
             headers: {
-              "Content-Type": "multipart/form-data",
+                'Content-Type': 'application/json',
+                'Origin': 'https://readersdelight.netlify.app'
             },
         });
         const res = send.data;
