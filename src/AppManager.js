@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 import { db, storage } from "./Api";
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { authRequired } from "./Auth";
-import { ApiClient, BodyPart, EmailMessageData, EmailRecipient, EmailsApi } from '@elasticemail/elasticemail-client';
 import axios from "axios";
 
 function randomCode(){
