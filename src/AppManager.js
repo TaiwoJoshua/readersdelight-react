@@ -609,6 +609,7 @@ export const sendEmail = async ( To, Subject, Content, setStatus = false, setFor
             },
         });
         const res = send.data;
+        console.log(res);
         setLoading && setLoading(false);
         if(res === "sent"){
             setStatus && setStatus(success);
@@ -621,6 +622,7 @@ export const sendEmail = async ( To, Subject, Content, setStatus = false, setFor
     } catch (error) {
         setLoading && setLoading(false);
         setStatus && setStatus(fail);
+        console.log(error);
         return "failed";
         // return error;
     }

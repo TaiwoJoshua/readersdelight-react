@@ -4,6 +4,7 @@ $allowed_origins = array(
     'http://localhost',
     'https://readersdelight.netlify.app/',
 );
+die($_SERVER['HTTP_ORIGIN']);
 
 // Check if the request origin is allowed
 if (in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)) {
