@@ -600,12 +600,12 @@ export const sendEmail = async ( To, Subject, Content, setStatus = false, setFor
         for(var key in data){
             formdata.append(key, data[key])
         }
-        const url = "https://www.ructrainingunit.com.ng/php/readersdelightemail.php";
+        // const url = 'http://localhost:8000/mail';
+        const url = 'https://readersdelight.netlify.app:8000/mail';
         const send = await axios.post(url,formdata, {
             mode: "cors",
             headers: {
                 'Content-Type': 'application/json',
-                'Origin': 'https://readersdelight.netlify.app'
             },
         });
         const res = send.data;
@@ -633,7 +633,7 @@ export function donationMail(name, booktitle, email){
         const mailContent = `<div style="background-color: #E9EBEE; padding: 40px 20px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"><div style="width: 100%; max-width: 600px; background-color: white; margin: auto; border-radius: 10px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); padding: 15px;"><a href="https://readersdelight.netlify.app/" style="text-decoration: none; color: black;"><h1 title='Readers Delight' style="display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0; padding: 0;"><img src="https://readersdelight.netlify.app/images/icon.png" alt="Readers Delight" style="width: 40px;" /><span style="color: #0B6623;">READERS</span>DELIGHT</h1></a><hr style="color: gray; margin: 15px 0;" /><h3 style="margin: 0;">Dear ${name},</h3><p>We hope this email finds you well.</p><p>We wanted to take a moment to express our heartfelt gratitude for your recent donation of <i>${booktitle}</i> to the <strong><span style="color: #0B6623;">READERS</span>DELIGHT</strong> eLibrary. Your generosity is truly appreciated, and your contribution will make a meaningful difference in our efforts to promote availability of resources.</p><p>Thank you for your kindness and support. Your donation will help enrich the reading experiences of many individuals in our community.</p><p style="margin-bottom: 0;">Warm regards,</p><p style="margin-top: 0;"><strong>Readers Delight Team.</strong></p></div></div>`;
 
         const res = sendEmail(`"${name}" <${email}>`, "Thank You for Your Donation", mailContent);
-        console.log(res);
+        // console.log(res);
         return res;
     } catch (error) {
         console.log(error);
@@ -641,7 +641,8 @@ export function donationMail(name, booktitle, email){
         // return error;
     }
 }
-donationMail("Taiwo Joshua", "Hello Hello", "joshuataiwo007@gmail.com");
+donationMail("Taiwo Joshua", "Hello Hello", "olamilekanjoshua07@gmail.com");
+// donationMail("Taiwo Joshua", "Hello Hello", "joshuataiwo007@gmail.com");
 
 
 // ==========================================================================================

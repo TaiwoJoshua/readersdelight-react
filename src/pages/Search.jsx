@@ -30,7 +30,7 @@ export default function Search() {
     function height(){
       const box = document.querySelector(".main>div>div").getBoundingClientRect().height;
       const wrapper = document.getElementsByClassName("home-books")[0];
-      const height = box - 90;
+      const height = box - 70;
       wrapper.style.height = height > wrapper.scrollHeight ? wrapper.scrollHeight : height + "px";
     }
     height();
@@ -50,7 +50,7 @@ export default function Search() {
   
   return (
     <div>
-      <div className='home-book-section'>
+      <div className='home-book-section' style={{ marginBottom: 0 }}>
         <h2 className='home-section-title'><FaSearch /> {search.toUpperCase()} Books</h2>
         <div className='home-books'>
           { searchElements }

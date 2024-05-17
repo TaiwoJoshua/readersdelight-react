@@ -1,14 +1,16 @@
 import React from 'react';
 import './Login.css';
 import { LiaCheckCircle, LiaExclamationTriangleSolid, LiaTimesCircle } from 'react-icons/lia';
-import { FaEnvelope, FaEye, FaEyeSlash, FaSpinner } from 'react-icons/fa6';
+import { FaEye, FaEyeSlash, FaSpinner } from 'react-icons/fa6';
 import { signInUser } from '../Auth';
+import Forgot from './Forgot';
 
 function Login({ close }) {
-    const [formData, setFormData] = React.useState({ email: "", password: "" });
+    const [formData, setFormData] = React.useState({ email: "joshuataiwo07@gmail.com", password: "" });
     const [showp, setShowp] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     const [status, setStatus] = React.useState({status: "", type: "", message: ""});
+    const [closeForgot, setCloseForgot] = React.useState(true);
 
     function handleChange(e){
         const { name, value } = e.target;
@@ -58,6 +60,7 @@ function Login({ close }) {
 
     return (
         <div className='confirm-action-wrapper'>
+            {!closeForgot && <Forgot close={() => { setCloseForgot(true) }} />}
             <form className='action-form' onSubmit={handleSubmit}>
                 <div className='action-nav'>
                     <h2 className="action-title">Login</h2>
@@ -65,17 +68,18 @@ function Login({ close }) {
                 </div>
                 <div className="action-main">
                     {status.message !== "" && <p className='status-wrapper' id="status-wrapper"><span className={`status-message ${status.type}`}>{status.message}</span><LiaTimesCircle className='status-close' onClick={() => {setStatus({status: "", type: "", message: ""})}}/></p>}
-                    <div className='password-input'>
+                    {/* <div className='password-input'>
                         <input readOnly={loading} type={"email"} name="email" className='action-input' required placeholder="E-Mail..." maxLength={50} minLength={10} value={formData.email} onChange={handleChange} autoComplete="off" />
                         <FaEnvelope className='password-icon' />
-                    </div>
+                    </div> */}
                     <div className='password-input'>
                         <input readOnly={loading} type={showp ? "text" : "password"} name="password" className='action-input' required placeholder="Password..." maxLength={25} minLength={6} value={formData.password} onChange={handleChange} autoComplete="off" />
                         {!showp && <FaEye onClick={toggleShow} className='password-icon' />}
                         {showp && <FaEyeSlash onClick={toggleShow} className='password-icon' />}
                     </div>
-                    <button type="submit" className='action-btn' disabled={loading} ref={(node) => { node && node.style.setProperty("background", loading === "done" ? "green" : loading === "failed" ? "red" : "black", "important"); }}>
-                        {loading ? loading === "done" ? <LiaCheckCircle style={{fontSize: "1.2em"}}  /> : loading === "failed" ? <LiaExclamationTriangleSolid style={{fontSize: "1.2em"}} /> : <FaSpinner className='spinner' style={{fontSize: "1.2em"}} /> : "confirm"}
+                    <span onClick={() => { setCloseForgot(false) }} className='action-forgot'>Forgot Password?</span>
+                    <button type="submit" className='action-btn' disabled={loading} ref={(node) => { node && node.style.setProperty("background", loading === "done" ? "green" : loading === "failed" ? "red" : loading ? "gray" : "black", "important"); }}>
+                        {loading ? loading === "done" ? <LiaCheckCircle style={{fontSize: "1.2em"}}  /> : loading === "failed" ? <LiaExclamationTriangleSolid style={{fontSize: "1.2em"}} /> : <FaSpinner className='spinner' style={{fontSize: "1.2em"}} /> : "submit"}
                     </button>
                 </div>
             </form>
