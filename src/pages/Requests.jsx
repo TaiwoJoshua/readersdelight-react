@@ -2,7 +2,7 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaCloud, FaSpinner, FaTriangleExclamation } from "react-icons/fa6";
 import LoadMoreBtn from "./components/LoadMoreBtn";
-import { getRecord, showSwal, sortByProperty, updateRecordField } from "../AppManager";
+import { getRecord, requestMail, showSwal, sortByProperty, updateRecordField } from "../AppManager";
 import { LiaCheckCircle, LiaCheckDoubleSolid } from "react-icons/lia";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../Api";
@@ -90,16 +90,25 @@ export default function Requests() {
         try {
             setLoading(true);
             const newData = { ...dat, status: bookStat };
-            const send = await updateRecordField("requests", newData);
-            if(send === true){
-                showSwal("success", "Updated");
-                setTimeout(() => {
-                    setLoading("success");
+            const mail = bookStat === "Completed" ? await requestMail(newData.name, newData.title, newData.email) : "sent";
+            console.log(mail);
+            if(mail === "sent"){
+                const send = await updateRecordField("requests", newData);
+                if(send === true){
+                    showSwal("success", "Updated");
                     setTimeout(() => {
-                        setData((oldData) => oldData.map((data) =>data.id === dat.id ? newData : data));
+                        setLoading("success");
+                        setTimeout(() => {
+                            setData((oldData) => oldData.map((data) => data.id === dat.id ? newData : data));
+                            setLoading(false);
+                        }, 2000);
+                    }, 1000);
+                }else{
+                    setLoading("failed");
+                    setTimeout(() => {
                         setLoading(false);
                     }, 2000);
-                }, 1000);
+                }
             }else{
                 setLoading("failed");
                 setTimeout(() => {
