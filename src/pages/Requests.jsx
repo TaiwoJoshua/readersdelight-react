@@ -33,7 +33,7 @@ export default function Requests() {
             setData(sortByProperty(data, "timestamp").reverse());
             setLoaded(true);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
 
         onSnapshot(doc(db, "books", "requests"), (doc) => {
             // const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
@@ -91,7 +91,6 @@ export default function Requests() {
             setLoading(true);
             const newData = { ...dat, status: bookStat };
             const mail = bookStat === "Completed" ? await requestMail(newData.name, newData.title, newData.email) : "sent";
-            console.log(mail);
             if(mail === "sent"){
                 const send = await updateRecordField("requests", newData);
                 if(send === true){

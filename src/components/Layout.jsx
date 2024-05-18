@@ -18,7 +18,7 @@ function Layout({ books, setBooks, admin }) {
     React.useEffect(() => {
         getRecord("shortcuts")
         .then(data => setShortcuts(sortByProperty(data, "shortcut")))
-        .catch(err => console.log(err));
+        .catch(err => err);
 
         onSnapshot(doc(db, "books", "shortcuts"), (doc) => {
             // const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
@@ -44,7 +44,7 @@ function Layout({ books, setBooks, admin }) {
             }
             setKeywords(keys);
         })
-        .catch(err => console.log(err));
+        .catch(err => err);
 
         onSnapshot(doc(db, "books", "keywords"), (doc) => {
             // const source = doc.metadata.hasPendingWrites ? "Local" : "Server";

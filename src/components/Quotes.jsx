@@ -13,7 +13,7 @@ export default function Quotes() {
             const randNum = Math.floor(Math.random() * data.length);
             setCurrQuote({ quote: data[randNum]["quote"], author: data[randNum]["author"] });
         })
-        .catch(err => console.log(err));
+        .catch(err => err);
     }, []);
 
     React.useEffect(() => {

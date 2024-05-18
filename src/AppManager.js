@@ -374,7 +374,7 @@ export function sortByProperty(arr, property) {
         let array = arr.slice();
         return array.sort((a, b) => compareByProperty(a, b, property));
     } catch (error) {
-        console.log(error);        
+        // console.log(error);        
     }
 };
 
@@ -530,27 +530,6 @@ export function checkImage(files, maxSize, setError, setStatus){
     }
 }
 
-export async function donationMail(name, booktitle, email){
-    try {
-        const send = await emailjs.send(process.env.REACT_APP_EMAIL_JS_SERVICE_ID, process.env.REACT_APP_EMAIL_JS_DONATION_TEMPLATE_ID, { name, booktitle, email }, process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY);
-        if (send.status === 200) {
-          return "sent";
-        }
-    } catch (error) {
-        return "failed";
-    }
-}
-
-export async function requestMail(name, booktitle, email){
-    try {
-        const send = await emailjs.send(process.env.REACT_APP_EMAIL_JS_SERVICE_ID, process.env.REACT_APP_EMAIL_JS_REQUEST_TEMPLATE_ID, { name, booktitle, email }, process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY);
-        if (send.status === 200) {
-          return "sent";
-        }
-    } catch (error) {
-        return "failed";
-    }
-}
 
 
 // ==========================================================================================
@@ -586,7 +565,7 @@ export const newRecordField = async (type, data) => {
         await setDoc(dataRef, {[data.id]: data}, { merge: true });
         return true;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         return error;
     }
 }
@@ -604,7 +583,7 @@ export const updateRecordField = async (type, data) => {
         await setDoc(dataRef, {[data.id]: data}, { merge: true });
         return true;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         return error;
     }
 }
@@ -744,5 +723,45 @@ export const deleteFiles = async (urls, folder = "") => {
         return true;
     } catch (error) {
         return error;
+    }
+}
+
+
+
+// ==========================================================================================
+
+// E-Mails
+
+// ==========================================================================================
+export async function donationMail(name, booktitle, email){
+    try {
+        const send = await emailjs.send(process.env.REACT_APP_EMAIL_JS_SERVICE_ID, process.env.REACT_APP_EMAIL_JS_DONATION_TEMPLATE_ID, { name, booktitle, email }, process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY);
+        if (send.status === 200) {
+          return "sent";
+        }
+    } catch (error) {
+        return "failed";
+    }
+}
+
+export async function requestMail(name, booktitle, email){
+    try {
+        const send = await emailjs.send(process.env.REACT_APP_EMAIL_JS_SERVICE_ID, process.env.REACT_APP_EMAIL_JS_REQUEST_TEMPLATE_ID, { name, booktitle, email }, process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY);
+        if (send.status === 200) {
+          return "sent";
+        }
+    } catch (error) {
+        return "failed";
+    }
+}
+
+export async function contactMail(name, message, email, subject, feedback){
+    try {
+        const send = await emailjs.send(process.env.REACT_APP_EMAIL_JS_SERVICE_ID, process.env.REACT_APP_EMAIL_JS_REQUEST_TEMPLATE_ID, { s: subject, name, message, contactemail: email, email: "joshuataiwo07@gmail.com", contact: true, feedback }, process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY);
+        if (send.status === 200) {
+          return "sent";
+        }
+    } catch (error) {
+        return "failed";
     }
 }

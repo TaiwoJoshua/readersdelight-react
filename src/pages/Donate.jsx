@@ -55,7 +55,6 @@ export default function Donate() {
                 }
             }, 2000);
         } catch (error) {
-            console.log(error);
             setStatus({status: "failed", type: "failed", message: "Donation Failed"});
             setLoading(false);
         }

@@ -44,7 +44,7 @@ export default function App() {
   React.useEffect(() => {
     getRecord("books")
     .then(data => setBooks(data))
-    .catch(err => console.log(err));
+    .catch(err => err);
 
     onSnapshot(doc(db, "books", "books"), (doc) => {
       // const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
@@ -64,7 +64,7 @@ export default function App() {
   //   fetch("/data/BooksData.json")
   //   .then(res => res.json())
   //   .then(data => setBooks(data))
-  //   .catch(err => console.log(err));
+  //   .catch(err => err);
   // }, []);
 
   

@@ -15,7 +15,7 @@ export default function DonationsCard({ cover, title, size, pages, link, author,
     return (
         <div className='book-card'>
             {!close && <DeleteBook type={"donations"} book={{ cover, title, id, preview }} setBooks={ setData } close={() => {setClose(true)}} />}
-            {!closeUpload && <UploadDonation donation={{ cover, title, size, pages, link, author, id, preview, courses }} setBooks={ setData } close={() => {setCloseUpload(true)}} />}
+            {!closeUpload && <UploadDonation donation={{ cover, title, size, pages, link, author, id, preview, courses }} donor={{ name, email }} setBooks={ setData } close={() => {setCloseUpload(true)}} />}
             <FancyboxView className='book-card-img'>
                 <a data-fancybox="book" href={cover}>
                     <img onError={(e)=>{ if (e.target.src !== "/default.png"){ e.target.onerror = null; e.target.src="/default.png"; }}} src={cover} alt={title} />

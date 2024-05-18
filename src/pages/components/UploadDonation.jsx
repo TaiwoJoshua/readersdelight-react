@@ -3,9 +3,9 @@ import '../../components/confirmAction.css';
 import { LiaTimesCircle } from 'react-icons/lia';
 import { FaSpinner } from 'react-icons/fa6';
 import { nanoid } from 'nanoid';
-import { deleteRecordField, showSwal, stripSpace, updateRecordField } from '../../AppManager';
+import { deleteRecordField, donationMail, showSwal, stripSpace, updateRecordField } from '../../AppManager';
 
-export default function UploadDonation({ donation, setBooks, close }) {
+export default function UploadDonation({ donation, setBooks, close, donor }) {
     const { id, title } = donation;
     const [something, setSomething] = React.useState("");
     const [status, setStatus] = React.useState({status: "", type: "", message: ""});
@@ -26,17 +26,23 @@ export default function UploadDonation({ donation, setBooks, close }) {
         try {
             setLoading(true);
             const uploadData = { ...donation, downloads: 0, timestamp: new Date().getTime() };
-            const send = await updateRecordField("books", uploadData);
-            if(send === true){
-                deleteRecordField("donations", id);
-                setBooks(oldBooks => {
-                    const newBooks = oldBooks.filter(book => book.id !== id);
-                    return newBooks;
-                });
-                showSwal("success", "Upload Successful");
-                setSomething("");
+            const mail = await donationMail(donor.name, title, donor.email);
+            if(mail === "sent"){
+                const send = await updateRecordField("books", uploadData);
+                if(send === true){
+                    deleteRecordField("donations", id);
+                    setBooks(oldBooks => {
+                        const newBooks = oldBooks.filter(book => book.id !== id);
+                        return newBooks;
+                    });
+                    showSwal("success", "Upload Successful");
+                    setSomething("");
+                }else{
+                    setStatus({status: "failed", type: "failed", message: "Upload Failed"});
+                    setLoading(false);
+                }
             }else{
-                setStatus({status: "failed", type: "failed", message: "Upload Failed"});
+                setStatus({status: "failed", type: "failed", message: "Upload Failed (Mail)"});
                 setLoading(false);
             }
         } catch (error) {
@@ -59,7 +65,7 @@ export default function UploadDonation({ donation, setBooks, close }) {
                     </p>
                     <i className='action-warning'><strong>Note:</strong> This action is irreversible and cannot be undone.</i>
                     <input type="text" name="whatever" className='action-input' required id="whatever" placeholder={keyword} maxLength={10} minLength={10} value={something} onChange={handleChange} autoComplete={keyword} />
-                    <button type="submit" className='action-btn' disabled={!match || loading}>{loading ? <FaSpinner className='spinner' style={{fontSize: "1.2em"}} /> : "delete"}</button>
+                    <button type="submit" className='action-btn' disabled={!match || loading}>{loading ? <FaSpinner className='spinner' style={{fontSize: "1.2em"}} /> : "upload"}</button>
                 </div>
             </form>
         </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { FaComment, FaPaperPlane, FaSpinner } from 'react-icons/fa6';
 import { LiaTimesCircle } from 'react-icons/lia';
 import { useLocation } from 'react-router-dom';
+import { contactMail } from '../AppManager';
 
 export default function Contact() {
     const [formData, setFormData] = React.useState({ name: "", email: "", message: "", subject: "" });
@@ -19,12 +20,14 @@ export default function Contact() {
         e.preventDefault();
         try {
             setLoading(true);
-            setTimeout(() => {
-                console.log(formData);
+            const mail = await contactMail(formData.name, formData.message, formData.email, formData.subject, feedback ? true : false);
+            if(mail === "sent"){
                 setStatus({status: "success", type: "success", message: `${feedback ? "Feedback" : "Message"} Sent`});
                 setFormData({ name: "", email: "", message: "", subject: "" });
-                setLoading(false);
-            }, 2000);
+            }else{
+                setStatus({status: "failed", type: "failed", message: `${feedback ? "Feedback" : "Message"} not Sent`});
+            }
+            setLoading(false);
         } catch (error) {
             setStatus({status: "failed", type: "failed", message: `${feedback ? "Feedback" : "Message"} not Sent`});
             setLoading(false);

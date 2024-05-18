@@ -49,7 +49,6 @@ export default function EditShortcut({ shortcut, icon, close, setShortcuts }) {
                 setLoading(false);
             }
         } catch (error) {
-            console.log(error);
             setStatus({status: "failed", type: "failed", message: "Update Failed"});
             setLoading(false);
         }

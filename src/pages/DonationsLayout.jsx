@@ -35,7 +35,7 @@ export default function DonationsLayout() {
             setData(sortByProperty(data, "timestamp").reverse()); 
             setLoaded(true);
         })
-        .catch(err => console.log(err));
+        .catch(err => err);
 
         onSnapshot(doc(db, "books", "donations"), (doc) => {
             // const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
@@ -55,7 +55,7 @@ export default function DonationsLayout() {
     //     fetch("/data/DonationsData.json")
     //     .then(res => res.json())
     //     .then(data => setData(sortByProperty(data, "timestamp").reverse()))
-    //     .catch(err => console.log(err));
+    //     .catch(err => err);
     // }, []);
 
     return ( 

@@ -114,7 +114,6 @@ export default function EditBook() {
                 }
             }, 2000);
         } catch (error) {
-            console.log(error);
             setStatus({status: "failed", type: "failed", message: "Update Failed"});
             setLoading(false);
         }
