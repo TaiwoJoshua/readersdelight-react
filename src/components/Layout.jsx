@@ -78,12 +78,15 @@ function Layout({ books, setBooks, admin }) {
     React.useEffect(() => {
         function height(){
             const screen = window.screen.height;
-            const navbar = document.getElementsByClassName("navbar")[0].getBoundingClientRect().height
-            const footer = document.getElementsByClassName("footer")[0].getBoundingClientRect().height
-            const quote = document.getElementsByClassName("quote")[0].getBoundingClientRect().height
+            const navbar = document.getElementsByClassName("navbar")[0]?.getBoundingClientRect().height
+            const footer = document.getElementsByClassName("footer")[0]?.getBoundingClientRect().height
+            const quote = document.getElementsByClassName("quote")[0]?.getBoundingClientRect().height
             ;
             const free = screen - navbar - footer - quote - 20;
-            document.querySelector(".main>div>div").style.minHeight = free + "px";
+            const box = document.querySelector(".main>div>div");
+            if(box){
+                box.style.minHeight = free + "px";
+            }
         }
         height();
         const quote = document.getElementsByClassName("quote")[0];
@@ -136,6 +139,7 @@ function Layout({ books, setBooks, admin }) {
                         <strong>Format</strong> - MTH 221 | MAT | CPE 123 <br />
                         Your book request would be worked upon <br />
                         Check back in few days or await a completion mail from us <br />
+                        <strong>Note: </strong> Please, save the ticket number to be able to check the status of the request. <br />
                         Thank you <br /><br /> 
                     </div>}
                     <Quotes />

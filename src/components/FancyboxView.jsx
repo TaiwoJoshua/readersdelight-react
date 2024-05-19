@@ -14,7 +14,8 @@ export default function FancyboxView(props) {
         transitionEffect: 'zoom-in-out',
         buttons: [
           'fullScreen',
-          'close'
+          'close',
+          'download'
         ]
     };
 

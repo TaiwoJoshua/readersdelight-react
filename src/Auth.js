@@ -1,6 +1,5 @@
-import { createUserWithEmailAndPassword, deleteUser, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "./Api";
-import emailjs from '@emailjs/browser';
 
 export const signOutUser = async () => {
     try {
@@ -11,36 +10,36 @@ export const signOutUser = async () => {
     }
 }
 
-export const createUser = async (email, password) => {
-    try {
-        await createUserWithEmailAndPassword(auth, email, password);
+// export const createUser = async (email, password) => {
+//     try {
+//         await createUserWithEmailAndPassword(auth, email, password);
     
-        // Send email verification
-        var actionCodeSettings = {
-            url: 'http://localhost:3000/signin',
-            handleCodeInApp: false
-        };
-        await sendEmailVerification(auth.currentUser, actionCodeSettings);
+//         // Send email verification
+//         var actionCodeSettings = {
+//             url: 'http://localhost:3000/signin',
+//             handleCodeInApp: false
+//         };
+//         await sendEmailVerification(auth.currentUser, actionCodeSettings);
     
-        // Email verification sent!
-        signOutUser();
+//         // Email verification sent!
+//         signOutUser();
     
-        // Return a success indicator or other relevant data
-        return {status: "E-Mail Verification Link Sent"}; // You can customize the return value as needed
-    } catch (error) {
-        return error; // You can customize the return value as needed
-    }
-};
+//         // Return a success indicator or other relevant data
+//         return {status: "E-Mail Verification Link Sent"}; // You can customize the return value as needed
+//     } catch (error) {
+//         return error; // You can customize the return value as needed
+//     }
+// };
 
-export const delUser = async () => {
-    try {
-        const user = auth.currentUser;
-        await deleteUser(user);
-        return true;
-    } catch (error) {
-        return error;        
-    }
-}
+// export const delUser = async () => {
+//     try {
+//         const user = auth.currentUser;
+//         await deleteUser(user);
+//         return true;
+//     } catch (error) {
+//         return error;        
+//     }
+// }
 
 export const signInUser = async (email, password) => {
     try {
@@ -95,35 +94,3 @@ export const authRequired = async () => {
     }
     return true;
 };
-
-export async function emailValidation(email) {
-    const url = `https://emailvalidation.abstractapi.com/v1/?api_key=${process.env.REACT_APP_ABSTRACT_EMAIL_API_KEY}&email=${email}`;
-  
-    try {
-        const response = await fetch(url);
-        if (response.status === 200) {
-            const data = JSON.parse(await response.text());
-            if(data.deliverability === "UNDELIVERABLE" || data.quality_score === "0.00" || data.autocorrect !== "" || !data.is_smtp_valid.value){
-                return false;
-            }else if(data.deliverability === "DELIVERABLE"){
-                return true;
-            }
-            return false;
-        } else {
-            throw new Error(`Request failed with status: ${response.status}`);
-        }
-    } catch (error) {
-        throw new Error(`Request failed: ${error.message}`);
-    }
-}
-  
-export async function sendMail(name, phone, message){
-    try {
-        const send = await emailjs.send(process.env.REACT_APP_EMAIL_JS_SERVICE_ID, process.env.REACT_APP_EMAIL_JS_TEMPLATE_ID, { name, phone, message}, process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY);
-        if(send.status === 200){
-            return true;
-        }
-    } catch (error) {
-        return error;
-    }
-}

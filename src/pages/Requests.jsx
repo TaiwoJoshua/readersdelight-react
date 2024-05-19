@@ -2,9 +2,9 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaCloud, FaSpinner, FaTriangleExclamation } from "react-icons/fa6";
 import LoadMoreBtn from "./components/LoadMoreBtn";
-import { getRecord, requestMail, showSwal, sortByProperty, updateRecordField } from "../AppManager";
+import { deleteRecordField, getRecord, getTimeDifferenceInDays, requestMail, showSwal, sortByProperty, updateRecordField } from "../AppManager";
 import { LiaCheckCircle, LiaCheckDoubleSolid } from "react-icons/lia";
-import { doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { db } from "../Api";
 import { useOutletContext } from "react-router-dom";
 
@@ -49,13 +49,6 @@ export default function Requests() {
         });
     }, []);
 
-    // React.useEffect(() => {
-    //     fetch("/data/RequestData.json")
-    //     .then((res) => res.json())
-    //     .then((data) => setData(sortByProperty(data, "ticket")))
-    //     .catch((err) => console.log(err));
-    // }, []);
-
     function handleSearch(e) {
         const { value } = e.target;
         if(value.length <= 10){
@@ -89,7 +82,7 @@ export default function Requests() {
         async function update() {
         try {
             setLoading(true);
-            const newData = { ...dat, status: bookStat };
+            const newData = { ...dat, status: bookStat, timestamp: new Date().getTime() };
             const mail = bookStat === "Completed" ? await requestMail(newData.name, newData.title, newData.email) : "sent";
             if(mail === "sent"){
                 const send = await updateRecordField("requests", newData);
@@ -209,7 +202,7 @@ export default function Requests() {
         });
 
     const othersData =
-        !admin && filterdata.length === 1
+        !admin && filterdata.length === 1 && search?.toString().length === 10
         ? filterdata.map((dat) => {
             return (
                 <div key={dat.id}>
@@ -240,6 +233,27 @@ export default function Requests() {
             );
             })
         : [];
+
+    React.useEffect(() => {
+        getRecord("sweep")
+        .then(tim => {
+            const diff = getTimeDifferenceInDays(tim[0]);
+            if(diff >= 3 && data.length !== 0){
+                data.map(dat => {
+                    const status = dat.status;
+                    const time = dat.timestamp;
+                    if((status === "Completed" || status === "Not Found") && getTimeDifferenceInDays(time) >= 7){
+                        console.log(dat.title, new Date(dat.timestamp), dat.status, dat.id);
+                        deleteRecordField("requests", dat.id);
+                    }
+                    return dat;
+                });
+                setDoc(doc(db, "books", "sweep"), { timestamp: new Date().getTime() });
+            }
+        })
+        .catch(err => err);
+
+    }, [data]);
 
     return (
         <div className="book-requests">

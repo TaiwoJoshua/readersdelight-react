@@ -18,8 +18,6 @@ export async function loader(books) {
     let final = books;
     if (final.length === 0) {
       const res = await getRecord("books");
-      // const fet = await fetch("/data/BooksData.json");
-      // const res = await fet.json();
       final = res;
     }
     return { books: [...final] };

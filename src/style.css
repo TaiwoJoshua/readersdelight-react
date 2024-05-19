@@ -1166,6 +1166,17 @@ Book Request and Donate Section
   font-weight: 500;
 }
 
+.btn-request{
+  display: flex;
+  align-items: center;
+}
+
+.btn-request .btn{
+  padding: .175rem .55rem;
+  font-size: 0.8rem;
+  margin: 10px 8px;
+}
+
 
 
 /* =============================================================================================

@@ -59,14 +59,6 @@ export default function App() {
       setBooks(data);
     });
   }, []);
-
-  // React.useEffect(() => {
-  //   fetch("/data/BooksData.json")
-  //   .then(res => res.json())
-  //   .then(data => setBooks(data))
-  //   .catch(err => err);
-  // }, []);
-
   
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {

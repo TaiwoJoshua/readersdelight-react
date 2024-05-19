@@ -51,13 +51,6 @@ export default function DonationsLayout() {
         });
     }, []);
 
-    // React.useEffect(() => {
-    //     fetch("/data/DonationsData.json")
-    //     .then(res => res.json())
-    //     .then(data => setData(sortByProperty(data, "timestamp").reverse()))
-    //     .catch(err => err);
-    // }, []);
-
     return ( 
         <>
             <Outlet context={{ data, setData, loaded }} />

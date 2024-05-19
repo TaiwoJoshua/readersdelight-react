@@ -530,6 +530,14 @@ export function checkImage(files, maxSize, setError, setStatus){
     }
 }
 
+export function getTimeDifferenceInDays(timestamp1, timestamp2 = new Date().getTime()) {
+    const date1 = new Date(timestamp1);
+    const date2 = new Date(timestamp2);
+    const differenceInMs = date2 - date1;
+    const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
+    return differenceInDays;
+}
+
 
 
 // ==========================================================================================
@@ -757,7 +765,7 @@ export async function requestMail(name, booktitle, email){
 
 export async function contactMail(name, message, email, subject, feedback){
     try {
-        const send = await emailjs.send(process.env.REACT_APP_EMAIL_JS_SERVICE_ID, process.env.REACT_APP_EMAIL_JS_REQUEST_TEMPLATE_ID, { s: subject, name, message, contactemail: email, email: "joshuataiwo07@gmail.com", contact: true, feedback }, process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY);
+        const send = await emailjs.send(process.env.REACT_APP_EMAIL_JS_SERVICE_ID, process.env.REACT_APP_EMAIL_JS_DONATION_TEMPLATE_ID, { s: subject, name, message, contactmail: email, email: "joshuataiwo07@gmail.com", contact: true, feedback }, process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY);
         if (send.status === 200) {
           return "sent";
         }
