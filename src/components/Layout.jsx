@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Preloader from './Preloader';
@@ -124,7 +124,7 @@ function Layout({ books, setBooks, admin }) {
             {preloader && <Preloader />}
             <div className="books-sheet"></div>
             <Navbar shortcuts={ shortcuts } admin={ admin } />
-            <span className="back-btn"><FaArrowLeft /></span>
+            <Link to={-1} className="back-btn"><FaArrowLeft /></Link>
             <main>
                 <div className='main'>
                     <Outlet context={{ keywords, setKeywords, books, setBooks, shortcuts, setShortcuts, admin }} />
