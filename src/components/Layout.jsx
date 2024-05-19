@@ -8,12 +8,14 @@ import { getRecord, sortByProperty } from '../AppManager';
 import Quotes from './Quotes';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../Api';
+import { FaArrowLeft } from 'react-icons/fa6';
 
 function Layout({ books, setBooks, admin }) {
     const [preloader, setPreloader] = React.useState(true);
     const { pathname } = useLocation();
     const [keywords, setKeywords] = React.useState({});
     const [shortcuts, setShortcuts] = React.useState([]);
+    const timeoutRef = React.useRef(null);  
 
     React.useEffect(() => {
         getRecord("shortcuts")
@@ -96,11 +98,33 @@ function Layout({ books, setBooks, admin }) {
         return () => resizeObserver.disconnect();
     }, [pathname]);
 
+    React.useEffect(() => {
+        function show(){
+            if(timeoutRef.current){
+                clearTimeout(timeoutRef.current);
+            }
+            const back = document.getElementsByClassName("back-btn")[0];
+            if(back){
+                back.style.left = "10px";
+                
+                timeoutRef.current = setTimeout(() => {
+                    back.style.left = "-50px";
+                }, 2000);
+            }
+        }
+        window.addEventListener('scroll', show);
+        
+        return () => {
+            window.removeEventListener('scroll', show);
+        }
+    }, []);
+
     return ( 
         <>
             {preloader && <Preloader />}
             <div className="books-sheet"></div>
             <Navbar shortcuts={ shortcuts } admin={ admin } />
+            <span className="back-btn"><FaArrowLeft /></span>
             <main>
                 <div className='main'>
                     <Outlet context={{ keywords, setKeywords, books, setBooks, shortcuts, setShortcuts, admin }} />
