@@ -78,7 +78,7 @@ export default function Request() {
             <form className='form' onSubmit={ handleSubmit }>
                 {status.message !== "" && <p className='status-wrapper' id="status-wrapper"><span className={`status-message ${status.type}`}>{status.message}</span><LiaTimesCircle className='status-close' onClick={() => {setStatus({status: "", type: "", message: ""})}}/></p>}
                 {ticket !== "" && <p className='status-wrapper' id="status-wrapper"><span className={`status-message`}>Request Ticket Number is <strong style={{marginLeft: "5px"}}>{ticket}</strong></span><LiaTimesCircle className='status-close' onClick={() => {setTicket("")}}/></p>}
-                {ticket !== "" && request.booktitle !== "" && <span className='btn-request'><span>Request File - </span><RequestDownloader content={requestContent()} filename={`${request.booktitle} Request`} btnname={"Download"} className={"btn"} /></span>}
+                {request.booktitle !== "" && <span className='btn-request'><span>Request File - </span><RequestDownloader content={requestContent()} filename={`${request.booktitle} Request`} btnname={"Download"} className={"btn"} /><LiaTimesCircle className='status-close' style={{color: "black"}} onClick={() => {setRequest({name: "", booktitle: "", ticket: ""})}}/></span>}
                 <div>
                     <div className="field">
                         <input onChange={ handleChange } readOnly={ loading } type="text" className="form-control" name="name" autoComplete="off" placeholder="Name" maxLength={30} value={ data.name } />

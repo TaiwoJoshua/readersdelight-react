@@ -1169,12 +1169,17 @@ Book Request and Donate Section
 .btn-request{
   display: flex;
   align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  margin: 5px 0;
+  position: relative;
 }
 
 .btn-request .btn{
   padding: .175rem .55rem;
   font-size: 0.8rem;
-  margin: 10px 8px;
+  margin: 0 8px;
 }
 
 
