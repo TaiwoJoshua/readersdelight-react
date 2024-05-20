@@ -10,7 +10,7 @@ import FancyboxView from "../components/FancyboxView";
 import SimilarBooks from "./components/SimilarBooks";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
-import { getRecord, showSwal } from "../AppManager";
+import { getRecord, showSwal, updateRecordField } from "../AppManager";
 import { nanoid } from "nanoid";
 
 export async function loader(books) {
@@ -109,6 +109,22 @@ export default function Download() {
     )
   );
 
+  async function increaseDownload(){
+    const downloads = parseInt(data.downloads) + 1;
+    const newData = { ...data, downloads };
+    const send = await updateRecordField("books", newData);
+    if(send === true){
+      setBooks(oldBooks => {
+        return oldBooks.map(book => {
+            if(book.id === id){
+              return { ...book, downloads };
+            }
+            return book;
+        });
+      });
+    }
+  }
+
   return (
     <div>
       <div className="book-info-card">
@@ -135,7 +151,7 @@ export default function Download() {
             <FancyboxView>
               {previewElement}
             </FancyboxView>
-            <a href={data.link}>
+            <a href={ data.link } target="_blank" rel="noreferrer" onClick={ increaseDownload }>
               <button>
                 <FaCloudDownloadAlt /> Download
               </button>
