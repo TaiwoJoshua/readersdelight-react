@@ -50,7 +50,7 @@ export default function Home() {
             interval = setInterval(() => {
                 const ran = Math.floor(Math.random());
                 const rand = Math.floor(Math.random());
-                let add = Math.floor(len / 100);
+                let add = len > 50 ? Math.floor(len / 100) : 1;
                 add = ran ? add + rand : add - rand;
                 setBookCount(old => {
                     let now = old;
