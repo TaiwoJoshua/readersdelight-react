@@ -26,14 +26,14 @@
 	animation: cover 7s ease-in-out infinite;
 }
 .preloaderbook {
-	background-color: red;
+	background-color: #0B6623;
 	border-radius: 0.25em;
 	box-shadow:
 		0 0.25em 0.5em hsla(0,0%,0%,0.3),
 		0 0 0 0.25em hsl(223,90%,55%) inset;
 		box-shadow:
 		0 0.25em 0.5em hsla(0,0%,0%,0.3),
-		0 0 0 0.25em red inset;
+		0 0 0 0.25em #0B6623 inset;
 	padding: 0.25em;
 	perspective: 37.5em;
 	position: relative;
@@ -99,11 +99,11 @@
 @keyframes cover {
 	from, 5%, 45%, 55%, 95%, to {
 		animation-timing-function: ease-out;
-		background-color: rgb(125, 8, 8);
+		background-color: rgb(8, 125, 8);
 	}
 	10%, 40%, 60%, 90% {
 		animation-timing-function: ease-in;
-		background-color: rgb(125, 8, 8);
+		background-color: rgb(8, 125, 8);
 	}
 }
 @keyframes shadow {
