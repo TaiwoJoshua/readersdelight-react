@@ -932,7 +932,7 @@ Download Section
   white-space: nowrap;
   text-decoration: none;
   margin: 0 5px;
-  color: red;
+  color: #006621;
   transition: color .15s ease-in-out;
 }
 
@@ -941,7 +941,7 @@ Download Section
 }
 
 .book-info-card>div.book-info>div>a:hover{
-  color: #0B6623;
+  color: #007bff;
 }
 
 .book-info-btn{
@@ -1096,7 +1096,7 @@ Form Section
   outline:none;
 }
 
-.field input:focus+label{
+.field input:focus+label, .field textarea:focus+label{
   color: #0B6623;
 }
 
