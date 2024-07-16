@@ -109,17 +109,17 @@ export default function Download() {
     )
   );
 
-  async function increaseDownload(){
+  async function increaseDownload() {
     const downloads = parseInt(data.downloads) + 1;
     const newData = { ...data, downloads };
     const send = await updateRecordField("books", newData);
-    if(send === true){
-      setBooks(oldBooks => {
-        return oldBooks.map(book => {
-            if(book.id === id){
-              return { ...book, downloads };
-            }
-            return book;
+    if (send === true) {
+      setBooks((oldBooks) => {
+        return oldBooks.map((book) => {
+          if (book.id === id) {
+            return { ...book, downloads };
+          }
+          return book;
         });
       });
     }
@@ -130,7 +130,16 @@ export default function Download() {
       <div className="book-info-card">
         <FancyboxView className="book-info-img">
           <a data-fancybox="book" href={data.cover}>
-            <img onError={(e)=>{ if (e.target.src !== "/default.png"){ e.target.onerror = null; e.target.src="/default.png"; }}} src={data.cover} alt={data.title} />
+            <img
+              onError={(e) => {
+                if (e.target.src !== "/default.png") {
+                  e.target.onerror = null;
+                  e.target.src = "/default.png";
+                }
+              }}
+              src={data.cover}
+              alt={data.title}
+            />
           </a>
         </FancyboxView>
         <div className="book-info">
@@ -141,17 +150,16 @@ export default function Download() {
               parseInt(data.downloads) > 1 ? "s" : ""
             }`}</span>
           </span>
-          <div>
-            {coursesElement}
-          </div>
-          <div>
-            {authorsElement}
-          </div>
+          <div>{coursesElement}</div>
+          <div>{authorsElement}</div>
           <div className="book-info-btn">
-            <FancyboxView>
-              {previewElement}
-            </FancyboxView>
-            <a href={ data.link } target="_blank" rel="noreferrer" onClick={ increaseDownload }>
+            <FancyboxView>{previewElement}</FancyboxView>
+            <a
+              href={data.link}
+              target="_blank"
+              rel="noreferrer"
+              onClick={increaseDownload}
+            >
               <button>
                 <FaCloudDownloadAlt /> Download
               </button>
@@ -166,7 +174,7 @@ export default function Download() {
         search={data.title}
         keywords={keywords}
         id={data.id}
-        admin={ admin }
+        admin={admin}
       />
     </div>
   );

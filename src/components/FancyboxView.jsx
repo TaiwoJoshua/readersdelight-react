@@ -10,13 +10,9 @@ export default function FancyboxView(props) {
 
     const delegate = props.delegate || "[data-fancybox]";
     const options = {
-        animationEffect: 'fade',
-        transitionEffect: 'zoom-in-out',
-        buttons: [
-          'fullScreen',
-          'close',
-          'download'
-        ]
+      animationEffect: "fade",
+      transitionEffect: "zoom-in-out",
+      buttons: ["fullScreen", "close", "download"],
     };
 
     NativeFancybox.bind(container, delegate, options);
@@ -27,5 +23,9 @@ export default function FancyboxView(props) {
     };
   });
 
-  return <div ref={containerRef} className="Fancybox">{props.children}</div>;
-};
+  return (
+    <div ref={containerRef} className="Fancybox">
+      {props.children}
+    </div>
+  );
+}

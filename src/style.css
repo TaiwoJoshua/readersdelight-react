@@ -1,33 +1,37 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
   width: 0.5em;
 }
-*::-webkit-scrollbar-track{
+
+*::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background: white;
 }
-*::-webkit-scrollbar-thumb{
+
+*::-webkit-scrollbar-thumb {
   background-color: black;
   border: 0.5px solid rgb(242, 242, 242);
 }
-:root{
+
+:root {
   scrollbar-color: black white;
   scrollbar-width: thin;
 }
 
-body{
-  background-color: #E9EBEE;
+body {
+  background-color: #e9ebee;
   max-width: 1500px;
   margin: auto;
 }
 
-.back-btn{
+.back-btn {
   width: 40px;
   height: 40px;
   display: flex;
@@ -36,7 +40,7 @@ body{
   position: fixed;
   top: 80px;
   left: -50px;
-  color: #0B6623;
+  color: #0b6623;
   font-size: 1.1em;
   border-radius: 50%;
   background-color: white;
@@ -47,71 +51,71 @@ body{
 }
 
 .books-sheet {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	background: url("../public/images/books.jpg");
-	background-size: 100px;
-	opacity: 0.08;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: url("../public/images/books.jpg");
+  background-size: 100px;
+  opacity: 0.08;
   z-index: 9999999999999;
   pointer-events: none;
 }
 
-section{
+section {
   padding: 10px;
 }
 
-.spinner{
+.spinner {
   animation: spin infinite 5s linear;
 }
 
 @keyframes spin {
-  from{
+  from {
     transform: rotate(0deg);
   }
-  to{
+  to {
     transform: rotate(360deg);
   }
 }
 
-main{
+main {
   display: flex;
   padding: 10px;
 }
 
-main>.main{
+main > .main {
   width: calc(100% - 300px);
   max-width: calc(100% - 300px);
 }
 
-main>.sidenav{
+main > .sidenav {
   width: 300px;
   padding: 0 15px;
 }
 
 @media screen and (max-width: 768px) {
-  main{
+  main {
     flex-direction: column;
   }
 
-  main>.main{
+  main > .main {
     width: 100%;
     max-width: 100%;
   }
 
-  main>.sidenav{
+  main > .sidenav {
     width: 100%;
     margin: 10px 0;
   }
 }
 
-.quote{
+.quote {
   transition: color 0.5s ease-in-out;
 }
 
 .loader-item {
   /* background: linear-gradient(110deg, #FFD700 8%, #ffee90 18%, #FFD700 33%); */
-  background: linear-gradient(to top right, #F4F6FF 0%, #FFF 100%);
+  background: linear-gradient(to top right, #f4f6ff 0%, #fff 100%);
   border-radius: 5px;
   background-size: 200% 100%;
   animation: 2s shine linear infinite;
@@ -130,28 +134,27 @@ main>.sidenav{
 Banner Section
 
 =========================================================================================== */
-.banner-wrap a{
+.banner-wrap a {
   text-decoration: none;
   color: black;
 }
 
-.banner-wrap h1{
+.banner-wrap h1 {
   display: flex;
   align-items: center;
   font-size: 20px;
 }
 
-.banner-wrap h1 img{
+.banner-wrap h1 img {
   width: 40px;
 }
-
 
 /* ===========================================================================================
 
 NavBar Section
 
 =========================================================================================== */
-.navbar{
+.navbar {
   width: 100%;
   height: 70px;
   background-color: white;
@@ -164,11 +167,11 @@ NavBar Section
   z-index: 4;
 }
 
-.navbar>.search-wrap{
+.navbar > .search-wrap {
   position: relative;
 }
 
-.navbar>.search-wrap>input{
+.navbar > .search-wrap > input {
   width: 300px;
   padding: 5px;
   padding-right: 28px;
@@ -178,15 +181,15 @@ NavBar Section
   border-radius: 3px;
 }
 
-.navbar>.search-wrap>svg{
+.navbar > .search-wrap > svg {
   position: absolute;
   right: 8px;
   top: 6px;
   cursor: pointer;
-  color: #0B6623;
+  color: #0b6623;
 }
 
-.button{
+.button {
   padding: 5px 20px;
   border-radius: 3px;
   cursor: pointer;
@@ -196,11 +199,12 @@ NavBar Section
   font-size: 1.02em;
 }
 
-#navToggle, #searchToggle{
+#navToggle,
+#searchToggle {
   display: none;
 }
 
-.md-nav{
+.md-nav {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -213,37 +217,38 @@ NavBar Section
   backdrop-filter: blur(2px);
 }
 
-.md-nav>div, .md-nav>div>ul{
+.md-nav > div,
+.md-nav > div > ul {
   width: 100%;
   /* height: 100%; */
   display: flex;
   flex-direction: column;
 }
 
-.md-nav>div:nth-child(1)>label{
+.md-nav > div:nth-child(1) > label {
   width: 100%;
   height: 100%;
 }
 
-.md-nav>div:nth-child(1)>label>svg{
+.md-nav > div:nth-child(1) > label > svg {
   font-size: 1.5em;
   margin: 5px;
   cursor: pointer;
 }
 
-.md-nav>div:nth-child(2){
+.md-nav > div:nth-child(2) {
   max-width: 200px;
   background-color: white;
 }
 
-.md-nav>div>ul>li{
+.md-nav > div > ul > li {
   list-style-type: none;
   height: 40px;
   border-bottom: 1px solid black;
   color: black;
 }
 
-.md-nav>div>ul>li>a{
+.md-nav > div > ul > li > a {
   height: 100%;
   display: flex;
   align-items: center;
@@ -255,7 +260,7 @@ NavBar Section
   transition: color 500ms ease-in-out;
 }
 
-.md-nav>div>ul>li>a::before{
+.md-nav > div > ul > li > a::before {
   content: "";
   position: absolute;
   top: 0;
@@ -263,89 +268,98 @@ NavBar Section
   right: 0;
   bottom: 0;
   z-index: -1;
-  background-color: #0B6623;
+  background-color: #0b6623;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 500ms ease-in-out;
 }
 
-.md-nav>div>ul>li>a:hover, .md-nav>div>ul>li>a.active{
+.md-nav > div > ul > li > a:hover,
+.md-nav > div > ul > li > a.active {
   color: white;
 }
 
-.md-nav>div>ul>li>a:hover::before, .md-nav>div>ul>li>a.active::before{
+.md-nav > div > ul > li > a:hover::before,
+.md-nav > div > ul > li > a.active::before {
   transform: scaleX(1);
 }
 
-.md-nav>div>ul>li>a>svg{
+.md-nav > div > ul > li > a > svg {
   margin-right: 5px;
 }
 
-.nav-md-menu{
+.nav-md-menu {
   display: none;
 }
 
-#navToggle:checked ~ .md-nav{
+#navToggle:checked ~ .md-nav {
   opacity: 1;
   pointer-events: initial;
 }
 
-.showSearch, .hideSearch{
+.showSearch,
+.hideSearch {
   display: none;
   cursor: pointer;
 }
 
-.nav-btn-wrap a, .shortcut-btn a{
+.nav-btn-wrap a,
+.shortcut-btn a {
   display: inline-block;
   width: 0;
   text-decoration: none;
 }
 
-.nav-btn-wrap button, .shortcut-btn button{
+.nav-btn-wrap button,
+.shortcut-btn button {
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease-in-out;
 }
 
-.nav-btn-wrap button:hover, .shortcut-btn button:hover{
-  background-color: #2196F3;
-  border-color: #2196F3;
+.nav-btn-wrap button:hover,
+.shortcut-btn button:hover {
+  background-color: #2196f3;
+  border-color: #2196f3;
 }
 
-.nav-btn-wrap button>svg, .shortcut-btn button>svg{
+.nav-btn-wrap button > svg,
+.shortcut-btn button > svg {
   margin-right: 3px;
   margin-bottom: -3px;
 }
 
 @media screen and (max-width: 768px) {
-  .navbar>.search-wrap>input{
+  .navbar > .search-wrap > input {
     width: 220px;
     padding: 3px 5px;
     padding-right: 28px;
   }
-  
-  .navbar>.search-wrap>svg{
+
+  .navbar > .search-wrap > svg {
     right: 8px;
     top: 5px;
     font-size: 0.9em;
   }
 
-  .navbar .button{
+  .navbar .button {
     padding: 5px 15px;
   }
 }
 
 @media screen and (max-width: 550px) {
-  .nav-md-menu{
+  .nav-md-menu {
     display: initial;
   }
 
-  .nav-btn-wrap, .hideSearch, #searchToggle{
+  .nav-btn-wrap,
+  .hideSearch,
+  #searchToggle {
     display: none;
   }
 
-  .navbar>.search-wrap{
+  .navbar > .search-wrap {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -353,143 +367,143 @@ NavBar Section
     transition: transform 0.3s ease-in-out;
   }
 
-  .showSearch, .hideSearch{
-    color: #0B6623;
+  .showSearch,
+  .hideSearch {
+    color: #0b6623;
     margin-right: 10px;
     display: flex;
     align-items: center;
   }
 
-  .hideSearch{
+  .hideSearch {
     display: none;
     font-size: 1.2em;
   }
 
-  #searchToggle:checked ~ .search-wrap{
+  #searchToggle:checked ~ .search-wrap {
     transform: translate(-50%, -50%) scaleX(1);
   }
 
-  #searchToggle:checked ~ .hideSearch{
+  #searchToggle:checked ~ .hideSearch {
     display: flex;
   }
 
-  #searchToggle:checked ~ .showSearch{
+  #searchToggle:checked ~ .showSearch {
     display: none;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .nav-md-menu{
+  .nav-md-menu {
     display: block;
   }
 }
-
 
 /* ===========================================================================================
 
 Footer Section
 
 =========================================================================================== */
-.footer{
+.footer {
   width: 100%;
 }
 
-.footer a:not(.banner-wrap a){
+.footer a:not(.banner-wrap a) {
   text-decoration: none;
   color: #4285f4;
-  transition: color .15s ease-in-out;
+  transition: color 0.15s ease-in-out;
 }
 
-.footer a:hover{
-  color: #4A80C4;
+.footer a:hover {
+  color: #4a80c4;
 }
 
-.footer>div{
+.footer > div {
   background-color: white;
   padding: 15px 10px;
 }
 
-.footer>div:nth-child(1){
+.footer > div:nth-child(1) {
   display: flex;
   margin-bottom: 2px;
 }
 
-.footer>div:nth-child(1)>div{
+.footer > div:nth-child(1) > div {
   width: 100%;
   margin: 0 3px;
   display: flex;
   flex-direction: column;
 }
 
-.footer>div:nth-child(1)>div>h3{
+.footer > div:nth-child(1) > div > h3 {
   color: gray;
   margin-bottom: 5px;
 }
 
-.footer>div:nth-child(2){
+.footer > div:nth-child(2) {
   text-align: center;
 }
 
 @media screen and (max-width: 768px) {
-  .footer>div>div:nth-child(1){
+  .footer > div > div:nth-child(1) {
     display: none;
   }
 }
 
 @media screen and (max-width: 550px) {
-  .footer>div:nth-child(1){
+  .footer > div:nth-child(1) {
     display: none;
     margin-bottom: 0;
   }
 }
-
 
 /* ===========================================================================================
 
 Book Card Section
 
 =========================================================================================== */
-.book-card{
+.book-card {
   width: 100%;
   height: 90px;
   margin-bottom: 10px;
   background-color: white;
   display: flex;
   border-radius: 3px;
-  transition: box-shadow .3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
   position: relative;
 }
 
-.book-card:hover{
+.book-card:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.book-card *{
+.book-card * {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-.book-card *::-webkit-scrollbar{
+.book-card *::-webkit-scrollbar {
   display: none;
 }
 
-.book-card>.Fancybox{
+.book-card > .Fancybox {
   display: inline-block;
   width: 70px;
   min-width: 70px;
 }
 
-.book-card img{
+.book-card img {
   width: 100%;
   height: 100%;
 }
 
-.book-card-info{
+.book-card-info {
   width: 100%;
   max-width: calc(100% - 70px);
 }
 
-.book-card-info>a, .book-card-info>div{
+.book-card-info > a,
+.book-card-info > div {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -500,7 +514,7 @@ Book Card Section
   color: gray;
 }
 
-.book-card-title{
+.book-card-title {
   max-height: 34px;
   font-size: 1.2em;
   line-height: 17px;
@@ -508,7 +522,7 @@ Book Card Section
   color: #365899;
 }
 
-.book-card-details{
+.book-card-details {
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
@@ -516,56 +530,57 @@ Book Card Section
   scrollbar-width: none;
 }
 
-.book-card-details>span{
+.book-card-details > span {
   margin-right: 2px;
   color: #006621;
 }
 
-.book-card-details>span>svg{
+.book-card-details > span > svg {
   font-size: 0.9em;
   margin-bottom: -2px;
 }
 
-.book-card-options{
+.book-card-options {
   display: flex;
   flex-wrap: wrap;
   position: relative;
 }
 
-.book-card-options>span, .book-card-options>span>label{
+.book-card-options > span,
+.book-card-options > span > label {
   display: flex;
   align-items: center;
   margin-right: 10px;
   transition: color 0.3s ease-in-out;
 }
 
-.book-card-options>span>label{
+.book-card-options > span > label {
   margin-right: 0;
 }
 
-.book-card-options>span:not(:nth-child(1)):hover{
+.book-card-options > span:not(:nth-child(1)):hover {
   color: black;
   cursor: pointer;
 }
 
-.book-card-options>span svg{
+.book-card-options > span svg {
   margin-right: 2px;
 }
 
-.book-card-options .courtesy{
+.book-card-options .courtesy {
   max-width: 100%;
   max-width: 150px;
   cursor: pointer;
 }
 
-.book-card-options .courtesy span span{
+.book-card-options .courtesy span span {
   max-width: calc(100% - 50px);
   overflow-x: auto;
   white-space: nowrap;
   margin-left: 3px;
 }
 
-.courtesy-data{
+.courtesy-data {
   padding: 8px;
   max-width: 250px;
   border-radius: 5px;
@@ -582,22 +597,24 @@ Book Card Section
   transition: opacity 0.3s ease-in-out;
 }
 
-.book-card:nth-child(1) .courtesy-data{
+.book-card:nth-child(1) .courtesy-data {
   top: 15px;
   bottom: initial;
 }
 
-.courtesy-data>span{
+.courtesy-data > span {
   display: flex;
   flex-direction: column;
 }
 
-.courtesy:hover + .courtesy-data, .courtesy:hover + .courtesy-data, .courtesy-data:hover{
+.courtesy:hover + .courtesy-data,
+.courtesy:hover + .courtesy-data,
+.courtesy-data:hover {
   pointer-events: all;
   opacity: 1;
 }
 
-.courtesy-head{
+.courtesy-head {
   display: flex;
   align-items: center;
   margin-top: 4px;
@@ -605,19 +622,19 @@ Book Card Section
   color: #777272;
 }
 
-.courtesy-head>svg{
+.courtesy-head > svg {
   margin-right: 5px;
   color: inherit;
   font-size: 0.9em;
 }
 
-.courtesy-data .message{
+.courtesy-data .message {
   display: inline-block;
   max-height: 60px;
   overflow-y: auto;
 }
 
-.book-card .book-admin{
+.book-card .book-admin {
   width: 80px;
   position: absolute;
   bottom: 0;
@@ -630,7 +647,8 @@ Book Card Section
   backdrop-filter: blur(0.5px);
 }
 
-.book-card .book-admin a, .book-card-options a:not(a.mail){
+.book-card .book-admin a,
+.book-card-options a:not(a.mail) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -638,43 +656,42 @@ Book Card Section
   color: inherit;
 }
 
-.book-card .book-admin svg{
+.book-card .book-admin svg {
   cursor: pointer;
 }
 
 @media screen and (max-width: 565px) {
-  .book-card:has(.book-card-options){
+  .book-card:has(.book-card-options) {
     height: 105px;
   }
 }
 
 @media screen and (max-width: 355px) {
-  .book-card:has(.book-card-options){
+  .book-card:has(.book-card-options) {
     height: 115px;
   }
 
-  .book-card:has(.book-card-options) .book-card-info{
+  .book-card:has(.book-card-options) .book-card-info {
     max-width: calc(100% - 80px);
   }
 
-  .book-card:has(.book-card-options)>.Fancybox{
+  .book-card:has(.book-card-options) > .Fancybox {
     width: 80px;
     min-width: 80px;
   }
 
-  .book-card-options>span{
+  .book-card-options > span {
     font-size: 0.9em;
     margin-right: 10px;
   }
 }
-
 
 /* ===========================================================================================
 
 Shortcut Section
 
 =========================================================================================== */
-.shortcuts-wrap{
+.shortcuts-wrap {
   max-height: calc(100vh - 150px);
   min-height: 200px;
   display: grid;
@@ -682,16 +699,18 @@ Shortcut Section
   overflow-y: auto;
 }
 
-.shortcuts-wrap, .shortcuts-wrap *{
+.shortcuts-wrap,
+.shortcuts-wrap * {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-.shortcuts-wrap::-webkit-scrollbar, .shortcuts-wrap *::-webkit-scrollbar{
+.shortcuts-wrap::-webkit-scrollbar,
+.shortcuts-wrap *::-webkit-scrollbar {
   display: none;
 }
 
-.md-nav .shortcuts-wrap{
+.md-nav .shortcuts-wrap {
   margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 10px;
@@ -699,7 +718,7 @@ Shortcut Section
   overflow-x: hidden;
 }
 
-.shortcut-card{
+.shortcut-card {
   width: 0px;
   display: flex;
   align-items: center;
@@ -708,7 +727,7 @@ Shortcut Section
   margin-bottom: 5px;
 }
 
-.special .shortcut-card{
+.special .shortcut-card {
   width: initial;
   max-height: 50px;
   background-color: white;
@@ -717,11 +736,11 @@ Shortcut Section
   padding: 5px;
 }
 
-.special.keywords-wrap .shortcut-card{
+.special.keywords-wrap .shortcut-card {
   max-height: 35px;
 }
 
-.shortcut-card>img{
+.shortcut-card > img {
   width: 40px;
   height: 40px;
   padding: 2px;
@@ -731,7 +750,7 @@ Shortcut Section
   background-color: white;
 }
 
-.shortcut-options{
+.shortcut-options {
   position: absolute;
   top: 50%;
   right: 8px;
@@ -741,51 +760,50 @@ Shortcut Section
   transition: color 0.2s ease-in-out;
 }
 
-.shortcut-options.one{
+.shortcut-options.one {
   right: 33px;
 }
 
-.shortcut-options:hover{
+.shortcut-options:hover {
   color: #000;
 }
 
 @media screen and (max-width: 768px) {
-  .shortcuts-wrap:not(.md-nav .shortcuts-wrap){
+  .shortcuts-wrap:not(.md-nav .shortcuts-wrap) {
     height: 200px;
   }
 }
 
 @media screen and (max-width: 550px) {
-  .shortcuts-wrap:not(.md-nav .shortcuts-wrap, .special){
+  .shortcuts-wrap:not(.md-nav .shortcuts-wrap, .special) {
     display: none !important;
   }
 
-  .shortcut-btn .button{
+  .shortcut-btn .button {
     font-size: 0.7em;
     padding: 4px 6px;
   }
 
-  .shortcut-card{
+  .shortcut-card {
     font-size: 0.8em;
   }
 
-  .shortcut-card>img{
+  .shortcut-card > img {
     width: 30px;
     height: 30px;
   }
 }
-
 
 /* ===========================================================================================
 
 Home Section
 
 =========================================================================================== */
-.home{
+.home {
   margin-bottom: -10px;
 }
 
-.welcome-info{
+.welcome-info {
   width: 100%;
   padding: 15px 25px;
   background-color: white;
@@ -795,39 +813,39 @@ Home Section
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
-.welcome-info>svg{
+.welcome-info > svg {
   position: absolute;
   top: 8px;
   right: 8px;
   cursor: pointer;
 }
 
-.home-book-section{
+.home-book-section {
   margin-bottom: 20px;
 }
 
-.home-section-title{
+.home-section-title {
   display: flex;
   align-items: center;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
-.home-section-title>svg{
+.home-section-title > svg {
   font-size: 0.9em;
   margin-right: 5px;
 }
 
-.home-books{
+.home-books {
   height: 300px;
   overflow-y: auto;
 }
 
-.home-books::-webkit-scrollbar{
+.home-books::-webkit-scrollbar {
   width: 0.3em;
 }
 
-.home-no-books{
+.home-no-books {
   background-color: white;
   padding: 40px 20px;
   font-size: 1.3em;
@@ -840,7 +858,7 @@ Home Section
 Load More Button Section
 
 =========================================================================================== */
-.load-btn{
+.load-btn {
   width: 100%;
   height: 40px;
   border: none;
@@ -857,39 +875,38 @@ Load More Button Section
   margin: 5px 0;
 }
 
-.load-btn>svg{
+.load-btn > svg {
   font-size: 0.9em;
   margin-bottom: -2px;
   margin-right: 5px;
 }
-
 
 /* ===========================================================================================
 
 Download Section
 
 =========================================================================================== */
-.book-info-card{
+.book-info-card {
   width: 100%;
   height: 190px;
   background-color: white;
   display: flex;
   border-radius: 3px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  transition: box-shadow .3s ease-in-out; 
+  transition: box-shadow 0.3s ease-in-out;
   overflow: hidden;
 }
 
-.book-info-card:hover{
+.book-info-card:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.book-info-card img{
+.book-info-card img {
   width: 150px;
   height: 100%;
 }
 
-.book-info-card>div.book-info{
+.book-info-card > div.book-info {
   width: calc(100% - 150px);
   display: flex;
   flex-direction: column;
@@ -897,7 +914,7 @@ Download Section
   padding: 8px;
 }
 
-.book-info-card>div.book-info>p{
+.book-info-card > div.book-info > p {
   font-size: 20px;
   line-height: 25px;
   max-height: 50px;
@@ -907,15 +924,15 @@ Download Section
   -ms-overflow-style: none;
 }
 
-.book-info-card>div.book-info>p::-webkit-scrollbar{
+.book-info-card > div.book-info > p::-webkit-scrollbar {
   display: none;
 }
 
-.book-info-card>div.book-info>span>span:nth-child(1){
+.book-info-card > div.book-info > span > span:nth-child(1) {
   margin-right: 20px;
 }
 
-.book-info-card>div.book-info>div{
+.book-info-card > div.book-info > div {
   width: 100%;
   display: flex;
   align-items: center;
@@ -924,33 +941,33 @@ Download Section
   -ms-overflow-style: none;
 }
 
-.book-info-card>div.book-info>div::-webkit-scrollbar{
+.book-info-card > div.book-info > div::-webkit-scrollbar {
   display: none;
 }
 
-.book-info-card>div.book-info>div>a{
+.book-info-card > div.book-info > div > a {
   white-space: nowrap;
   text-decoration: none;
   margin: 0 5px;
   color: #006621;
-  transition: color .15s ease-in-out;
+  transition: color 0.15s ease-in-out;
 }
 
-.book-info-card>div.book-info>div>a:nth-child(1){
+.book-info-card > div.book-info > div > a:nth-child(1) {
   margin-left: 0;
 }
 
-.book-info-card>div.book-info>div>a:hover{
+.book-info-card > div.book-info > div > a:hover {
   color: #007bff;
 }
 
-.book-info-btn{
+.book-info-btn {
   display: flex;
   justify-content: flex-end;
   padding: 5px;
 }
 
-.book-info-btn button{
+.book-info-btn button {
   width: 100px;
   height: 30px;
   border-radius: 4px;
@@ -965,54 +982,55 @@ Download Section
   transition: background-color 300ms ease-in-out;
 }
 
-.book-info-btn a:nth-child(2)>button{
-  background-color: #0B6623;
+.book-info-btn a:nth-child(2) > button {
+  background-color: #0b6623;
 }
 
-.book-info-btn button:hover, .book-info-btn a:hover>button{
+.book-info-btn button:hover,
+.book-info-btn a:hover > button {
   background-color: black;
 }
 
-.book-info-btn button>svg{
+.book-info-btn button > svg {
   margin-right: 3px;
 }
 
-.book-info-btn a{
+.book-info-btn a {
   text-decoration: none;
 }
 
 @media screen and (max-width: 500px) {
-  .book-info-card{
+  .book-info-card {
     height: 144px;
   }
 
-  .book-info-card img{
+  .book-info-card img {
     width: 100px;
   }
-  
-  .book-info-card>div.book-info{
+
+  .book-info-card > div.book-info {
     width: calc(100% - 100px);
-  }  
-  
-  .book-info-card>div.book-info>p{
+  }
+
+  .book-info-card > div.book-info > p {
     font-size: 16px;
     line-height: 18px;
     max-height: 36px;
   }
 
-  .book-info-card>div.book-info>span{
+  .book-info-card > div.book-info > span {
     font-size: 0.8em;
   }
 
-  .book-info-card>div.book-info>div>a{
+  .book-info-card > div.book-info > div > a {
     font-size: 0.8em;
   }
-  
-  .book-info-btn{
+
+  .book-info-btn {
     padding: 3px;
   }
 
-  .book-info-btn button{
+  .book-info-btn button {
     width: 80px;
     height: 25px;
     border-radius: 3px;
@@ -1021,109 +1039,110 @@ Download Section
   }
 }
 
-
 /* ===========================================================================================
 
 About Section
 
 =========================================================================================== */
-.about{
+.about {
   color: #777272;
   line-height: 2em;
   background-color: white;
   padding: 10px;
 }
 
-.about>h3{
+.about > h3 {
   color: black;
 }
 
-.about>h3>span{
-  color: #0B6623;
+.about > h3 > span {
+  color: #0b6623;
 }
 
-.about>div>span{
-  color: #0B6623;
+.about > div > span {
+  color: #0b6623;
   font-weight: 500;
   font-size: 1.1em;
   margin-bottom: -5px;
 }
 
-.about a{
+.about a {
   text-decoration: none;
   color: #4285f4;
-  transition: color .15s ease-in-out;
+  transition: color 0.15s ease-in-out;
 }
 
-.about a:hover{
-  color: #4A80C4;
+.about a:hover {
+  color: #4a80c4;
 }
-
 
 /* ===========================================================================================
 
 Form Section
 
 =========================================================================================== */
-.field{
-  position:relative;
-  font-family:Arial;
-  text-transform:uppercase;
-  font-weight:bold;
-  display:inline-block;
-  width:100%;
-  margin-bottom:20px;
+.field {
+  position: relative;
+  font-family: Arial;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.field label{
-  position:absolute;
+.field label {
+  position: absolute;
   left: 1px;
   top: -1px;
-  transition:all .2s linear;
-  color:#999;
-  font-size:11px;
+  transition: all 0.2s linear;
+  color: #999;
+  font-size: 11px;
 }
 
-.field label span{
+.field label span {
   color: red;
 }
 
-.field input, .field textarea{
-  margin-top:15px;
+.field input,
+.field textarea {
+  margin-top: 15px;
 }
 
-.field input:focus, .field input:focus{
-  outline:none;
+.field input:focus,
+.field input:focus {
+  outline: none;
 }
 
-.field input:focus+label, .field textarea:focus+label{
-  color: #0B6623;
+.field input:focus + label,
+.field textarea:focus + label {
+  color: #0b6623;
 }
 
-.field textarea{
+.field textarea {
   resize: none;
 }
 
 .form-control {
   display: block;
   width: 100%;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   outline: none;
-  transition: border-color .15s ease-in-out, box-shadow .3s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.form-control:focus{
-  box-shadow: 0 0 5px #0B6623;
+.form-control:focus {
+  box-shadow: 0 0 5px #0b6623;
 }
 
-.form div:has(button.btn){
+.form div:has(button.btn) {
   display: flex;
   justify-content: flex-end;
 }
@@ -1140,26 +1159,27 @@ Form Section
   -ms-user-select: none;
   user-select: none;
   border: none;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: .25rem;
-  transition: color .15s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .15s ease-in-out;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out, box-shadow 0.15s ease-in-out;
   color: #fff;
   background-color: #007bff;
   cursor: pointer;
 }
 
-.btn>svg{
+.btn > svg {
   margin-right: 3px;
 }
 
-.btn:hover{
-  background-color: #2196F3;
-  border-color: #2196F3;
+.btn:hover {
+  background-color: #2196f3;
+  border-color: #2196f3;
 }
 
-button:disabled{
+button:disabled {
   height: 35px;
   border: none;
   padding: 0 20px;
@@ -1168,24 +1188,23 @@ button:disabled{
   cursor: not-allowed;
 }
 
-
 /* ===========================================================================================
 
 Book Request and Donate Section
 
 =========================================================================================== */
-.book-request{
+.book-request {
   padding: 30px 20px;
   background-color: white;
 }
 
-.book-request>h3{
-  color: #0B6623;
+.book-request > h3 {
+  color: #0b6623;
   margin-bottom: 15px;
   font-weight: 500;
 }
 
-.btn-request{
+.btn-request {
   display: flex;
   align-items: center;
   border-radius: 5px;
@@ -1195,20 +1214,18 @@ Book Request and Donate Section
   position: relative;
 }
 
-.btn-request .btn{
-  padding: .175rem .55rem;
+.btn-request .btn {
+  padding: 0.175rem 0.55rem;
   font-size: 0.8rem;
   margin: 0 8px;
 }
-
-
 
 /* =============================================================================================
 
 Status Message
 
 ================================================================================================ */
-.status-wrapper{
+.status-wrapper {
   width: auto;
   min-width: 200px;
   max-width: 100%;
@@ -1219,7 +1236,7 @@ Status Message
   margin: 5px 0;
 }
 
-.status-message{
+.status-message {
   width: 100%;
   text-align: center;
   font-size: 14px;
@@ -1234,33 +1251,32 @@ Status Message
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
 
-.status-message.success{
-  background-color: #90E18D;
+.status-message.success {
+  background-color: #90e18d;
 }
 
-.status-message.failed{
+.status-message.failed {
   background-color: red;
 }
 
-.status-close{
+.status-close {
   position: absolute;
   right: 10px;
   color: white;
   cursor: pointer;
 }
 
-
 /* ===========================================================================================
 
 Book Requests Section
 
 =========================================================================================== */
-.book-requests{
+.book-requests {
   padding: 40px 20px;
   background-color: white;
 }
 
-.custom-search{
+.custom-search {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1270,7 +1286,7 @@ Book Requests Section
 .custom-search .search {
   --background: #ffffff;
   --text-color: #414856;
-  --primary-color: #0B6623;
+  --primary-color: #0b6623;
   --border-radius: 10px;
   --width: 190px;
   --height: 55px;
@@ -1287,7 +1303,7 @@ Book Requests Section
   transform: scale(0.8);
 }
 
-.custom-search .search input{
+.custom-search .search input {
   position: relative;
   width: var(--height);
   height: var(--height);
@@ -1313,36 +1329,43 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.custom-search .search input:focus, .custom-search .search input:not(:placeholder-shown) {
+.custom-search .search input:focus,
+.custom-search .search input:not(:placeholder-shown) {
   opacity: 1;
   width: var(--width);
   cursor: initial;
 }
 
-.custom-search .search input.admin-search:focus, .custom-search .search input.admin-search:not(:placeholder-shown) {
+.custom-search .search input.admin-search:focus,
+.custom-search .search input.admin-search:not(:placeholder-shown) {
   width: 250px;
 }
 
-.custom-search .search input:focus ~ .symbol::before, .custom-search .search input:not(:placeholder-shown) ~ .symbol::before {
+.custom-search .search input:focus ~ .symbol::before,
+.custom-search .search input:not(:placeholder-shown) ~ .symbol::before {
   width: 0%;
 }
 
-.custom-search .search input:focus ~ .symbol::after, .custom-search .search input:not(:placeholder-shown) ~ .symbol::after {
+.custom-search .search input:focus ~ .symbol::after,
+.custom-search .search input:not(:placeholder-shown) ~ .symbol::after {
   -webkit-clip-path: inset(0% 0% 0% 100%);
-          clip-path: inset(0% 0% 0% 100%);
+  clip-path: inset(0% 0% 0% 100%);
   transition: -webkit-clip-path 0.04s linear 0.105s;
   transition: clip-path 0.04s linear 0.105s;
-  transition: clip-path 0.04s linear 0.105s, -webkit-clip-path 0.04s linear 0.105s;
+  transition: clip-path 0.04s linear 0.105s,
+    -webkit-clip-path 0.04s linear 0.105s;
 }
 
-.custom-search .search input:focus ~ .symbol .cloud, .custom-search .search input:not(:placeholder-shown) ~ .symbol .cloud {
+.custom-search .search input:focus ~ .symbol .cloud,
+.custom-search .search input:not(:placeholder-shown) ~ .symbol .cloud {
   top: -30px;
   left: -30px;
   transform: translate(0, 0);
   transition: all 0.6s ease;
 }
 
-.custom-search .search input:focus ~ .symbol .lens, .custom-search .search input:not(:placeholder-shown) ~ .symbol .lens {
+.custom-search .search input:focus ~ .symbol .lens,
+.custom-search .search input:not(:placeholder-shown) ~ .symbol .lens {
   top: 20px;
   left: 15px;
   transform: translate(0, 0);
@@ -1352,7 +1375,12 @@ input[type="number"] {
   cursor: pointer;
 }
 
-.custom-search .search input.admin-search:focus ~ .symbol .lens, .custom-search .search input.admin-search:not(:placeholder-shown) ~ .symbol .lens {
+.custom-search .search input.admin-search:focus ~ .symbol .lens,
+.custom-search
+  .search
+  input.admin-search:not(:placeholder-shown)
+  ~ .symbol
+  .lens {
   fill: #000;
 }
 
@@ -1389,10 +1417,11 @@ input[type="number"] {
   background: var(--primary-color);
   z-index: 1;
   -webkit-clip-path: inset(0% 0% 0% 0%);
-          clip-path: inset(0% 0% 0% 0%);
+  clip-path: inset(0% 0% 0% 0%);
   transition: -webkit-clip-path 0.04s linear 0.225s;
   transition: clip-path 0.04s linear 0.225s;
-  transition: clip-path 0.04s linear 0.225s, -webkit-clip-path 0.04s linear 0.225s;
+  transition: clip-path 0.04s linear 0.225s,
+    -webkit-clip-path 0.04s linear 0.225s;
 }
 
 .custom-search .search:has(.admin-search) .symbol:before {
@@ -1430,7 +1459,7 @@ input[type="number"] {
   pointer-events: none;
 }
 
-.custom-table{
+.custom-table {
   width: 100%;
   overflow-x: auto;
   margin: 10px 0;
@@ -1439,7 +1468,7 @@ input[type="number"] {
 .custom-table .table-fill {
   background: white;
   border-collapse: collapse;
-  padding:5px;
+  padding: 5px;
   width: 100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
@@ -1453,25 +1482,25 @@ input[type="number"] {
   border-bottom: 2px solid #9ea7af;
   font-weight: bolder;
   padding: 15px;
-  text-align:left;
+  text-align: left;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align: middle;
 }
 
 .custom-table th:last-child {
-  border-right:none;
+  border-right: none;
 }
-  
+
 .custom-table tr {
-  border-top: 1px solid #C1C3D1;
-  border-bottom: 1px solid #C1C3D1;
-  color:#777272;
-  font-weight:normal;
+  border-top: 1px solid #c1c3d1;
+  border-bottom: 1px solid #c1c3d1;
+  color: #777272;
+  font-weight: normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
 
 .custom-table tr:nth-child(odd) td {
-  background-color: rgba(0,0,0,.05);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .custom-table tr td {
@@ -1483,27 +1512,28 @@ input[type="number"] {
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
 }
- 
+
 .custom-table tr:last-child:hover td {
   border-bottom: none;
 }
- 
+
 .custom-table tr:first-child {
-  border-top:none;
+  border-top: none;
 }
 
-.custom-table tr:last-child, .custom-table tbody {
-  border-bottom:none;
+.custom-table tr:last-child,
+.custom-table tbody {
+  border-bottom: none;
   overflow: hidden;
 }
- 
+
 .custom-table td {
-  background:#FFFFFF;
-  padding:15px 10px;
-  text-align:left;
-  vertical-align:middle;
+  background: #ffffff;
+  padding: 15px 10px;
+  text-align: left;
+  vertical-align: middle;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-  border-right: 1px solid #C1C3D1;
+  border-right: 1px solid #c1c3d1;
 }
 
 .custom-table td:last-child {
@@ -1538,7 +1568,8 @@ input[type="number"] {
   background-color: #ffeeba;
 }
 
-.custom-table tr:hover td.table-warning, .custom-table tr td.table-warning:hover {
+.custom-table tr:hover td.table-warning,
+.custom-table tr td.table-warning:hover {
   background-color: #ffe8a1;
 }
 
@@ -1546,7 +1577,8 @@ input[type="number"] {
   background-color: #bee5eb;
 }
 
-.custom-table tr:hover td.table-info, .custom-table tr td.table-info:hover {
+.custom-table tr:hover td.table-info,
+.custom-table tr td.table-info:hover {
   background-color: #abdde5;
 }
 
@@ -1554,7 +1586,8 @@ input[type="number"] {
   background-color: #c3e6cb;
 }
 
-.custom-table tr:hover td.table-success, .custom-table tr td.table-success:hover {
+.custom-table tr:hover td.table-success,
+.custom-table tr td.table-success:hover {
   background-color: #b1dfbb;
 }
 
@@ -1562,42 +1595,41 @@ input[type="number"] {
   background-color: #f5c6cb;
 }
 
-.custom-table tr:hover td.table-danger, .custom-table tr td.table-danger:hover {
+.custom-table tr:hover td.table-danger,
+.custom-table tr td.table-danger:hover {
   background-color: #f1b0b7;
 }
-
 
 /* =============================================================================================
 
 Sweet Alert
 
 ================================================================================================ */
-.swal2-show{
+.swal2-show {
   border: 3px solid #000 !important;
   max-width: 90vw !important;
 }
-.swal2-cancel{
-  background-color: #0B6623 !important;
+.swal2-cancel {
+  background-color: #0b6623 !important;
   color: white !important;
 }
-.swal2-text{
+.swal2-text {
   text-align: center;
 }
 
-.swal2-confirm{
+.swal2-confirm {
   background-color: #000 !important;
   color: white !important;
 }
 
-.swal2-deny{
-  background-color: #90E18D !important;
+.swal2-deny {
+  background-color: #90e18d !important;
   color: white !important;
 }
 
 .swal2-popup .swal2-styled:focus {
   box-shadow: none !important;
 }
-
 
 /* =============================================================================================
 
@@ -1620,11 +1652,11 @@ Error Pages
   text-shadow: 0 0 20px rgb(68, 65, 65), 0 0 8px rgb(24, 22, 22), 0 0 3px black;
 }
 
-.btn-link{
+.btn-link {
   text-decoration: none;
 }
 
-.btn-link>button{
+.btn-link > button {
   width: 250px;
   margin: auto;
   border: none;
@@ -1638,14 +1670,14 @@ Error Pages
   border-radius: 5px;
   align-items: center;
   justify-content: center;
-  background-color: #0B6623;
-  transition: box-shadow .3s ease-in-out;
+  background-color: #0b6623;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-.btn-link>button>svg{
+.btn-link > button > svg {
   margin-right: 5px;
 }
 
-.btn-link>button:hover{
+.btn-link > button:hover {
   box-shadow: 0 0 10px red, 0 0 5px FireBrick, 0 0 2px DarkRed;
 }
