@@ -588,35 +588,39 @@ export function showSwal(icon, title, text, time) {
 }
 
 export async function wordSearcher(word = "") {
-  let synonyms = [];
-  if (!word) return synonyms;
+  try {
+    let synonyms = [];
+    if (!word) return synonyms;
 
-  let inputs = word.split(" ").join("-").split("-");
+    let inputs = word.split(" ").join("-").split("-");
 
-  for (let p = 0; p < inputs.length; p++) {
-    const input = inputs[p];
-    const response = await fetch(
-      `https://api.dictionaryapi.dev/api/v2/entries/en/${input}`
-    );
-    const data = await response.json();
+    for (let p = 0; p < inputs.length; p++) {
+      const input = inputs[p];
+      const response = await fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${input}`
+      );
+      const data = await response.json();
 
-    if (data.length > 0) {
-      const dat = data[0];
-      let syns = dat.meanings;
-      let syn = [];
-      syns.map((syne) => {
-        syn = [...syn, ...syne.synonyms];
-        return syne;
-      });
-      synonyms = [...synonyms, ...syn];
+      if (data.length > 0) {
+        const dat = data[0];
+        let syns = dat.meanings;
+        let syn = [];
+        syns.map((syne) => {
+          syn = [...syn, ...syne.synonyms];
+          return syne;
+        });
+        synonyms = [...synonyms, ...syn];
 
-      syn = syns.map((syn) => syn.definitions.synonyms);
-      synonyms = [...synonyms, ...syn];
+        syn = syns.map((syn) => syn.definitions.synonyms);
+        synonyms = [...synonyms, ...syn];
+      }
     }
+    synonyms = synonyms.filter((syn) => syn);
+    synonyms = Array.from(new Set(synonyms));
+    return synonyms;
+  } catch (error) {
+    return [];
   }
-  synonyms = synonyms.filter((syn) => syn);
-  synonyms = Array.from(new Set(synonyms));
-  return synonyms;
 }
 
 function expandKeywords(inputString, keywords) {
