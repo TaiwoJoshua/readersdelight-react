@@ -28,12 +28,15 @@ export default function SimilarBooks({
   }, [result]);
 
   React.useEffect(() => {
-    const { output } = sortBooks(books, search, keywords, getPriority("title"));
-    setResult(
-      output
-        .filter((book) => book.id !== id)
-        .slice(0, output.length > 50 ? 50 : output.length)
-    );
+    sortBooks(books, search, keywords, getPriority("title"))
+      .then(({ output }) =>
+        setResult(
+          output
+            .filter((book) => book.id !== id)
+            .slice(0, output.length > 50 ? 50 : output.length)
+        )
+      )
+      .catch((err) => err);
   }, [books, keywords, search, id]);
 
   const searchElements = result

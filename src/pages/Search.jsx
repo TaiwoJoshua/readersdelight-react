@@ -44,13 +44,9 @@ export default function Search() {
   }, []);
 
   React.useEffect(() => {
-    const { output, length } = sortBooks(
-      books,
-      search,
-      keywords,
-      getPriority(priority)
-    );
-    setResult(output.slice(0, length));
+    sortBooks(books, search, keywords, getPriority(priority))
+      .then(({ output, length }) => setResult(output.slice(0, length)))
+      .catch((err) => err);
   }, [books, keywords, search, priority]);
 
   const searchElements = result
