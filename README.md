@@ -32,7 +32,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 1.  **Clone the repository**
 
     ```sh
-    git clone https://github.com/TaiwoJoshua/readersdelight.git
+    git clone https://github.com/TaiwoJoshua/readersdelight-react.git
     cd ReadersDelight
     ```
 
@@ -114,4 +114,4 @@ Distributed under the MIT License. See LICENSE for more information.
 - joshuataiwo07@gmail.com
 - My Portfolio: https://taiwojoshua.netlify.app/
 - Live Hosting: https://readersdelight.netlify.app/
-- Project Link: https://github.com/TaiwoJoshua/readersdelight
+- Project Link: https://github.com/TaiwoJoshua/readersdelight-react
